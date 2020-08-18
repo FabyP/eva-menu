@@ -37,7 +37,7 @@ function LoadMenu(){
         <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mr-auto">
                 {categories.map(category => (
-                    <Nav.Link /*href={'#' + category.name}*/ key={category._id}>{category.name}</Nav.Link>
+                    <Nav.Link /*href={'#' + category.name}*/  key={category._id}>{category.name}</Nav.Link>
                 ))}
             </Nav>
             <Form inline>

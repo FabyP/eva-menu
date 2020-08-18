@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import Carousel from 'react-bootstrap/Carousel'
+import 'bootstrap/dist/css/bootstrap.min.css'
+
+import sliderImage from './SliderImage.png'
+
 
 function ControlledCarousel() {
 
@@ -10,42 +14,17 @@ function ControlledCarousel() {
   };
 
   return (
-    <Carousel activeIndex={index} onSelect={handleSelect} slide={false}>
+    <Carousel>
       <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src="holder.js/800x400?text=First slide&bg=373940"
-          alt="First slide"
-        />
-        <Carousel.Caption>
-          <h3>Anleitung</h3>
-          <p>Wie man bestellt</p>
-        </Carousel.Caption>
+          <img src={sliderImage} alt="platzhalter"/>
       </Carousel.Item>
       <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src="holder.js/800x400?text=Second slide&bg=282c34"
-          alt="Second slide"
-        />
-        <Carousel.Caption>
-          <h3>Unsere Werte</h3>
-          <p>regional, frisch</p>
-        </Carousel.Caption>
+        <img src={sliderImage} alt="platzhalter"/>
       </Carousel.Item>
       <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src="holder.js/800x400?text=Third slide&bg=20232a"
-          alt="Third slide"
-        />
-        <Carousel.Caption>
-          <h3>Empfehlungen</h3>
-          <p>
-            Schnitzel
-          </p>
-        </Carousel.Caption>
+        <img src={sliderImage} alt="platzhalter"/>
       </Carousel.Item>
+
     </Carousel>
   );
 }
