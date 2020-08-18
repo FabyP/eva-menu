@@ -14,12 +14,9 @@ import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
 
 import logo from './images/Logo.png'
 
-
-
 function App() {
 
   const [sideDrawerOpen, setSideDrawerOpen] = useState(false);
-
 
   const drawerToggleClickHandler = () =>{
     if(sideDrawerOpen){
