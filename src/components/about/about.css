@@ -1,0 +1,28 @@
+.topic{
+    margin:auto;
+    display: flex;
+    align-items: center;
+    width: 60%;
+    justify-content: space-around;
+    margin-top: 8rem;
+}
+
+.carousel{
+    margin: 3rem 10rem;
+}
+
+.caption{
+    margin-bottom: 10rem;
+    text-align: center;
+}
+h3{
+    margin-bottom: 2rem;
+    color: darkgreen;
+    text-align: center;
+    text-decoration: underline;
+    font-size: 3rem;
+}
+p{
+    text-align: center;
+    font-size: 1.2rem;
+}
