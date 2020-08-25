@@ -16,10 +16,12 @@
 
 .nav_logo{
  margin-left: 1rem;
+ font-weight: bold;
+ font-family: 'Roboto';
 }
 
 .nav_logo a{
-    color: white;
+    color: #13aa52;
     text-decoration: none;
     font-size: 1.5rem;
 

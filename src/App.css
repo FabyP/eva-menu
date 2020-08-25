@@ -1,15 +1,35 @@
+html, body {
+  margin: 0; 
+  height: 100%; 
+  overflow: hidden
+}
+
 .App {
   text-align: center;
+  height: 100%;
+
 }
+
+.hauptseite{
+  background-image:  url("./images/LogoEvaHell.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 45%;
+  position: relative;
+}
+
 /* Haupseite */
 .willkommen{
   margin:auto;
   display: flex;
   align-items: center;
-  width: 60%;
+  width: 80%;
   justify-content: space-around;
-  margin-bottom: 5rem;
-  margin-top: 8rem;
+  margin-top: 7rem;
+  margin-bottom: 37rem;
+  color: #13aa52;
+  font-size: 50px;
+  
 }
 
 
@@ -28,7 +48,7 @@
   justify-content: space-around;
   align-items: center;
   min-height: 10vh;
-  background: darkolivegreen;
+  background: #1a1a1a;
   color: white; 
 }
 
@@ -44,8 +64,7 @@ img{
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
-  border-radius: 8px;
+  width: 40%;
   max-width: 100%;
   height: auto;
 }
@@ -58,17 +77,17 @@ img{
 
 .button-hauptseite{
   margin:auto;
-  margin-top: 5rem;
+  
   margin-left: 4rem;
-  background-color: #4CAF50; /* Green */
+  background-color: #116149; /* Green */
   border: none;
-  width: 250px;
+  width: 450px;
   border-radius: 8px;
   color: white;
-  padding: 15px 32px;
+  padding: 30px 32px;
   text-align: center;
   text-decoration: none;
-  font-size: 24px;
+  font-size: 30px;
   justify-content: space-around;
 }
 

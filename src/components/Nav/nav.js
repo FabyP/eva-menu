@@ -14,13 +14,13 @@ import {Link, withRouter} from 'react-router-dom';
                 <div>
                     <ToggleButton click={props.drawerClickHandler}/>
                 </div>
-                <div className="nav_logo"><a href="/">Dorfkrug</a></div>
+                <div className="nav_logo"><a href="/">EVAs Imbiss</a></div>
                 <div className="spacer"></div>
                 <div className="nav_items">
                     <ul>
                         <Link to='/order'>
                             <IconContext.Provider value={{ color: "white", size: "2rem" }}>
-                                <li><MdShoppingBasket /></li>
+                                <li className="basket"><MdShoppingBasket /></li>
                             </IconContext.Provider>
                         </Link>
                     </ul>

@@ -12,7 +12,7 @@ import Backdrop from './components/Backdrop/backdrop'
 
 import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
 
-import logo from './images/Logo.png'
+import logo from './images/LogoEvaHell.png'
 
 function App() {
 
@@ -60,8 +60,8 @@ function App() {
 const Home = () => (
   <div className='hauptseite'>
     <main style={{marginTop: '100px'}}>
-      <h1 className='willkommen'>Herzlich Willkommen im Dorfkrug Oberhone</h1>
-      <img className= 'logo' src={logo} alt="Logo" />;
+      <h1 className='willkommen'>Herzlich Willkommen bei EVAs Imbiss</h1>
+      {/* <img className= 'logo' src={logo} alt="Logo" />; */}
       <div className="button-around">
         <Link to="/about">
         <button type="button" className="button-hauptseite">

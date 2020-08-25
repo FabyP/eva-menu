@@ -42,13 +42,13 @@ function ControlledCarousel() {
           <img style={{'height':"600px"}}  className="d-block w-100" src={sliderImage}  />  
           <Carousel.Caption className="caption">  
             <h3>Unsere Öffnungszeiten</h3>  
-            <p>Montag: Ruhetag</p>
-            <p>Dienstag: 17:00-20:00</p>
-            <p>Mittwoch: 17:00-20:00</p>
-            <p>Donnerstag: 17:00-20:00</p>
-            <p>Freitag: 17:00-20:00</p>
-            <p>Samstag: 8:00-20:00</p>
-            <p>Sonntag: 8:00-20:00</p>
+            Montag: Ruhetag<br/>
+            Dienstag: 17:00-20:00<br/>
+            Mittwoch: 17:00-20:00<br/>
+            Donnerstag: 17:00-20:00<br/>
+            Freitag: 17:00-20:00<br/>
+            Samstag: 8:00-20:00<br/>
+            Sonntag: 8:00-20:00<br/>
           </Carousel.Caption>  
         </Carousel.Item>  
       </Carousel>  

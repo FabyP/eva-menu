@@ -29,12 +29,13 @@
 }
 
 .side-Drawer a{
-    color: green;
+    color: #116149;
     text-decoration: none;
-    font-size: 1.2rem;
+    font-size: 1.6rem;
+    font-weight: bold;
 }
 
 .side-Drawer a:hover,
 .side-Drawer a:active{
-    color: darkolivegreen;
+    color: #1a1a1a;
 }
