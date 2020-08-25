@@ -5,6 +5,8 @@ import TabList from '@material-ui/lab/TabList';
 import TabPanel from '@material-ui/lab/TabPanel';
 import TabScrollButton from '@material-ui/core/TabScrollButton';
 import Tabs from '@material-ui/core/Tabs'; */
+import{ Tabs, Tab, AppBar} from '@material-ui/core';
+import TabPanel from '@material-ui/lab/TabPanel';
 import axios from 'axios';
 
 import './menu.css'
@@ -13,13 +15,25 @@ function LoadMenu(){
 
     const [categories, setCategories] = useState([]);
     const [menuitems, setMenuitems] = useState([]);
+    const [sortedMenu, setSortedMenu] = useState({categoriesid: {}});
 
     const fetchCategories = async() => {
         await axios.get('http://localhost:9000/categories')
         .then(function (response) {
             setCategories(response.data);
+            response.data.map(function (category) {
+                let categoryId = category._id;
+                setSortedMenu((prevState) => ({               
+                        categoriesid: {
+                            ...prevState.categoriesid,
+                            [categoryId]: []
+                        }        
+                }))
+            })
+
             console.log(response.data);
-            console.log(categories);
+            console.log(categories); 
+            console.log(sortedMenu);
         })
         .catch(function (error) {
             console.log(error);
@@ -30,8 +44,17 @@ function LoadMenu(){
         await axios.get('http://localhost:9000/menuitems')
         .then(function (response) {
             setMenuitems(response.data);
+            response.data.map(function (menuitem) {
+                let menucategoriesId = menuitem.categoryID;
+                setSortedMenu((prevState) => ({               
+                    categoriesid: {
+                        ...prevState.categoriesid,
+                        [menucategoriesId]: prevState.categoriesid[menucategoriesId].concat([menuitem])
+                    }        
+            }))           
+            })
             console.log(response.data);
-            console.log(categories);
+            console.log(sortedMenu);
         })
         .catch(function (error) {
             console.log(error);
@@ -42,13 +65,22 @@ function LoadMenu(){
         fetchCategories();
         fetchMenuitems();
     }, [])
-    
+
+    const [selectedTab, setSelectedTab] = useState(0);
+
+    const handleChange = (event, newValue) => {
+        setSelectedTab(newValue);
+    }
     
     return(
         <div>
-            {menuitems.map(MENUITEM => (
-                <p key={MENUITEM._id}>{MENUITEM.name}<br/>{MENUITEM.description} </p>
-            ))}
+            <AppBar position="static" className="appbar">
+                <Tabs value={selectedTab} onChange={handleChange}>
+                    {categories.map(category => (
+                        <Tab key={category._id} label={category.name} />
+                    ))}
+                </Tabs>
+            </AppBar>
         </div>
 /*             <div>
                 <AppBar position="static">
@@ -70,9 +102,6 @@ function LoadMenu(){
                     ))}
                 </div>
             </div> */
-        
-        
-
     );
 
 }
