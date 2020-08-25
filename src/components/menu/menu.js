@@ -15,25 +15,23 @@ function LoadMenu(){
 
     const [categories, setCategories] = useState([]);
     const [menuitems, setMenuitems] = useState([]);
-    const [sortedMenu, setSortedMenu] = useState({categoriesid: {}});
+    const [sortedMenu, setSortedMenu] = useState({});
 
     const fetchCategories = async() => {
         await axios.get('http://localhost:9000/categories')
         .then(function (response) {
             setCategories(response.data);
+           
             response.data.map(function (category) {
                 let categoryId = category._id;
-                setSortedMenu((prevState) => ({               
-                        categoriesid: {
-                            ...prevState.categoriesid,
-                            [categoryId]: []
-                        }        
-                }))
+                if(categoryId !== undefined){
+                    setSortedMenu((prevState) => ({               
+                        ...prevState,[categoryId]: []
+                     }))
+                }
+                
             })
 
-            console.log(response.data);
-            console.log(categories); 
-            console.log(sortedMenu);
         })
         .catch(function (error) {
             console.log(error);
@@ -44,15 +42,16 @@ function LoadMenu(){
         await axios.get('http://localhost:9000/menuitems')
         .then(function (response) {
             setMenuitems(response.data);
-            response.data.map(function (menuitem) {
+             response.data.map(function (menuitem) {
                 let menucategoriesId = menuitem.categoryID;
+                console.log(menucategoriesId);
+                if(menucategoriesId !== undefined && menucategoriesId !== '5f3bca215b0073c41e6a3166'){
                 setSortedMenu((prevState) => ({               
-                    categoriesid: {
-                        ...prevState.categoriesid,
-                        [menucategoriesId]: prevState.categoriesid[menucategoriesId].concat([menuitem])
-                    }        
-            }))           
-            })
+                        ...prevState,
+                        [menucategoriesId]: [...prevState[menucategoriesId], menuitem]
+                }))
+            }       
+            }) 
             console.log(response.data);
             console.log(sortedMenu);
         })
@@ -64,6 +63,7 @@ function LoadMenu(){
     useEffect(() =>{
         fetchCategories();
         fetchMenuitems();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const [selectedTab, setSelectedTab] = useState(0);
