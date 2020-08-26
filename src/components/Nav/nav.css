@@ -20,12 +20,28 @@
  font-family: 'Roboto';
 }
 
-.nav_logo a{
+@media screen and (max-width: 320px){
+    .nav_logo a{
+        color: #13aa52;
+        text-decoration: none;
+        font-size: 1rem;
+    
+    }
+    }
+@media screen and (min-width: 320px){
+        .nav_logo a{
+            color: #13aa52;
+            text-decoration: none;
+            font-size: 1.5rem;
+        
+        }
+}
+/* .nav_logo a{
     color: #13aa52;
     text-decoration: none;
     font-size: 1.5rem;
 
-}
+} */
 
 .spacer{
     flex: 1;

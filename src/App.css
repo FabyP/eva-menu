@@ -18,19 +18,100 @@ html, body {
   position: relative;
 }
 
-/* Haupseite */
-.willkommen{
-  margin:auto;
-  display: flex;
-  align-items: center;
-  width: 80%;
-  justify-content: space-around;
-  margin-top: 7rem;
-  margin-bottom: 37rem;
-  color: #13aa52;
-  font-size: 50px;
+/* Haupseite Media-Breakpoints 320;640*/
+@media screen and (min-width: 0px){
+  .willkommen{
+    margin:auto;
+    display: flex;
+    align-items: center;
+    width: 40%;
+    justify-content: space-around;
+    margin-top: 7rem;
+    margin-bottom: 15rem;
+    color: #13aa52;
+    font-size: 25px;
+    
+  }
+
+  .button-hauptseite{
+    margin:auto;
+    
+    margin-left: 1rem;
+    background-color: #116149; /* Green */
+    border: none;
+    width: 100px;
+    border-radius: 8px;
+    color: white;
+    padding: 15px 16px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 15px;
+    justify-content: space-around;
+  }
+
+  }
+
+  @media screen and (min-width: 320px){
+    .willkommen{
+      margin:auto;
+      display: flex;
+      align-items: center;
+      width: 60%;
+      justify-content: space-around;
+      margin-top: 7rem;
+      margin-bottom: 25rem;
+      color: #13aa52;
+      font-size: 30px;
+      
+    }
+
+    .button-hauptseite{
+      margin:auto;
+      
+      margin-left: 2rem;
+      background-color: #116149; /* Green */
+      border: none;
+      width: 160px;
+      border-radius: 8px;
+      color: white;
+      padding: 20px 22px;
+      text-align: center;
+      text-decoration: none;
+      font-size: 20px;
+      justify-content: space-around;
+    }
+    }
+
+    @media screen and (min-width: 640px){
+      .willkommen{
+        margin:auto;
+        display: flex;
+        align-items: center;
+        width: 80%;
+        justify-content: space-around;
+        margin-top: 7rem;
+        margin-bottom: 37rem;
+        color: #13aa52;
+        font-size: 50px;
+        
+      }
   
-}
+      .button-hauptseite{
+        margin:auto;
+        
+        margin-left: 4rem;
+        background-color: #116149; /* Green */
+        border: none;
+        width: 450px;
+        border-radius: 8px;
+        color: white;
+        padding: 30px 32px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 30px;
+        justify-content: space-around;
+      }
+      }
 
 
 /* Navigation */
@@ -75,20 +156,6 @@ img{
   align-items: center;
 }
 
-.button-hauptseite{
-  margin:auto;
-  
-  margin-left: 4rem;
-  background-color: #116149; /* Green */
-  border: none;
-  width: 450px;
-  border-radius: 8px;
-  color: white;
-  padding: 30px 32px;
-  text-align: center;
-  text-decoration: none;
-  font-size: 30px;
-  justify-content: space-around;
-}
+
 
 
