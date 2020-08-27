@@ -9,6 +9,8 @@ import{ Tabs, Tab, AppBar} from '@material-ui/core';
 import TabPanel from '@material-ui/lab/TabPanel';
 import axios from 'axios';
 
+import http from '../../http-common';
+
 import './menu.css'
 
 function LoadMenu(){
@@ -18,7 +20,7 @@ function LoadMenu(){
     const [sortedMenu, setSortedMenu] = useState({});
 
     const fetchCategories = async() => {
-        await axios.get('http://localhost:9000/categories')
+        await http.get('/categories')
         .then(function (response) {
             setCategories(response.data);
            
@@ -39,7 +41,7 @@ function LoadMenu(){
     };
 
     const fetchMenuitems = async() => {
-        await axios.get('http://localhost:9000/menuitems')
+        await http.get('/menuitems')
         .then(function (response) {
             setMenuitems(response.data);
              response.data.map(function (menuitem) {
@@ -63,7 +65,6 @@ function LoadMenu(){
     useEffect(() =>{
         fetchCategories();
         fetchMenuitems();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const [selectedTab, setSelectedTab] = useState(0);
