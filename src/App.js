@@ -59,7 +59,7 @@ function App() {
 
 const Home = () => (
   <div className='hauptseite'>
-    <main style={{marginTop: '100px'}}>
+    <main style={{marginTop: '80px'}}>
       <h1 className='willkommen'>Herzlich Willkommen bei EVAs Imbiss</h1>
       {/* <img className= 'logo' src={logo} alt="Logo" />; */}
       <div className="button-around">
