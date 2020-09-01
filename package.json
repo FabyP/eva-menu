@@ -19,10 +19,11 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.2",
     "react-slick": "^0.27.9",
-    "swiper": "^6.1.2"
+    "swiper": "^6.1.2",
+    "universal-cookie": "^4.0.3"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "set PORT=3006 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

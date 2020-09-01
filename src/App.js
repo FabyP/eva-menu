@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import Cookies from 'universal-cookie';
 
 import './App.css';
 
@@ -31,6 +32,33 @@ function App() {
   const  backdropClickHandler = () => {
     setSideDrawerOpen(false) ;
   };
+
+  useEffect(() => {
+    // Update the document title using the browser API
+    let table = findGetParameter('table');
+    let s = findGetParameter('s');
+    if(table !== null && s !== null){
+      const cookies = new Cookies();
+      cookies.set('table', table, { path: '/' });
+      cookies.set('s', s, { path: '/' });
+
+    }
+    console.log(findGetParameter('table'));
+    
+  },[]);
+
+  function findGetParameter(parameterName) {
+    var result = null,
+        tmp = [];
+        window.location.search
+        .substr(1)
+        .split("&")
+        .forEach(function (item) {
+          tmp = item.split("=");
+          if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+        });
+    return result;
+}
 
 
   let backdrop;
