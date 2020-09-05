@@ -10,6 +10,7 @@ import { IconContext } from "react-icons";
 import http from '../../http-common';
 
 import './menu.css'
+import {useGlobalState} from '../../context/global-context';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -57,6 +58,7 @@ function LoadMenu(){
     const [categories, setCategories] = useState([]);
     const [menuitems, setMenuitems] = useState([]);
     const [sortedMenu, setSortedMenu] = useState({});
+    const {cartCount, fetchCartCount} = useGlobalState();
 
 
     const fetchCategories = async() => {
@@ -102,10 +104,24 @@ function LoadMenu(){
         })
     };
 
+    const addToCart = async( menuItemId ) => {
+      await http.post('/cart', {
+        menuItemId: menuItemId,
+      })
+      .then(function (response) {
+        fetchCartCount();
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+
 
     useEffect(() =>{
         fetchCategories();
         fetchMenuitems();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const [selectedTab, setSelectedTab] = useState(0);
@@ -144,7 +160,7 @@ function LoadMenu(){
                     {sortedMenu[category._id] !== undefined &&
                         sortedMenu[category._id].map((menu) =>(
                           <div>
-                            <h2 className="menuTitle">{menu.name}</h2><IconContext.Provider value={{ color: "black", size: "2rem" }}><li className="add"><MdAdd/></li></IconContext.Provider>
+                            <h2 className="menuTitle">{menu.name}</h2><IconContext.Provider value={{ color: "black", size: "2rem" }}><li className="add" onClick={() => addToCart(menu._id)}><a href="#"><MdAdd/></a></li></IconContext.Provider>
                             {menu.description}
                           </div>
                         ))

@@ -1,14 +1,24 @@
-import React from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, {useEffect} from 'react';
 import ToggleButton from '../SideDrawer/DrawerToggleButton';
 import {MdShoppingBasket} from 'react-icons/md';
 import { IconContext } from "react-icons";
 /*MdShoppingCart*/
 import './nav.css';
+import {useGlobalState} from '../../context/global-context';
+
 
 import {Link, withRouter} from 'react-router-dom';
 
-
-    const navigationBar = props => (
+   
+    const NavigationBar = (props) => {
+        const {cartCount, fetchCartCount} = useGlobalState();
+        useEffect(() => {
+            // Update the document title using the browser API
+            fetchCartCount();
+            
+          },[]);
+        return(
         <header className="navBar">
             <nav className="navigation">
                 <div>
@@ -18,16 +28,16 @@ import {Link, withRouter} from 'react-router-dom';
                 <div className="spacer"></div>
                 <div className="nav_items">
                     <ul>
-                        <Link to='/order'>
+                        <Link to='/cart'>
                             <IconContext.Provider value={{ color: "white", size: "2rem" }}>
-                                <li className="basket"><MdShoppingBasket /></li>
+                                <li className="basket"><span>{cartCount}</span><MdShoppingBasket /></li>
                             </IconContext.Provider>
                         </Link>
                     </ul>
                 </div>
             </nav>
-        </header>
-    );
+        </header>)
+    };
 
 /*     return(
         <nav className = 'navigation'>
@@ -44,4 +54,4 @@ import {Link, withRouter} from 'react-router-dom';
         </nav>
     ); */
 
-export default navigationBar;
+export default NavigationBar

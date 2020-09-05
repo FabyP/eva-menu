@@ -10,6 +10,8 @@ import LoadOrder from './components/order/order'
 import LoadMenuDetail from './components/menu/menuDetail'
 import SideDrawer from './components/SideDrawer/sideDrawer'
 import Backdrop from './components/Backdrop/backdrop'
+import Cart from './components/cart/cart'
+import {GlobalProvider} from './context/global-context'
 
 import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
 
@@ -34,7 +36,6 @@ function App() {
   };
 
   useEffect(() => {
-    // Update the document title using the browser API
     let table = findGetParameter('table');
     let s = findGetParameter('s');
     if(table !== null && s !== null){
@@ -43,8 +44,6 @@ function App() {
       cookies.set('s', s, { path: '/' });
 
     }
-    console.log(findGetParameter('table'));
-    
   },[]);
 
   function findGetParameter(parameterName) {
@@ -70,6 +69,7 @@ function App() {
   return (
     <Router>
       <div className = "app" style={{height: '100%'}}>
+      <GlobalProvider>
         <LoadNav drawerClickHandler={drawerToggleClickHandler} />
         <SideDrawer show={sideDrawerOpen}/>
         {backdrop}
@@ -78,8 +78,10 @@ function App() {
           <Route path="/about" component = {LoadAbout}/>
           <Route path="/menu" exact component = {LoadMenu}/>
           <Route path="/order" component = {LoadOrder}/>
+          <Route path="/cart" exact component = {Cart}/>
           <Route path = "/menu/:id" component = {LoadMenuDetail}/>
         </Switch>
+        </GlobalProvider>
       </div>
     </Router>
   );
