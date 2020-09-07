@@ -12,6 +12,8 @@ import http from '../../http-common';
 import './menu.css'
 import {useGlobalState} from '../../context/global-context';
 
+import {Link} from 'react-router-dom';
+
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
   
@@ -160,7 +162,8 @@ function LoadMenu(){
                     {sortedMenu[category._id] !== undefined &&
                         sortedMenu[category._id].map((menu) =>(
                           <div>
-                            <h2 className="menuTitle">{menu.name}</h2><IconContext.Provider value={{ color: "black", size: "2rem" }}><li className="add" onClick={() => addToCart(menu._id)}><a href="#"><MdAdd/></a></li></IconContext.Provider>
+                            <Link to={`/menu/${menu._id}`}><h2 className="menuTitle">{menu.name}</h2></Link>
+                            <IconContext.Provider value={{ color: "black", size: "2rem" }}><li className="add" onClick={() => addToCart(menu._id)}><a href="#"><MdAdd/></a></li></IconContext.Provider>
                             {menu.description}
                           </div>
                         ))
