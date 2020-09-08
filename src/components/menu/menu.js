@@ -1,6 +1,5 @@
 import React,{useEffect, useState} from 'react';
 import{ Tabs, Tab, AppBar, Typography, Box, TabScrollButton} from '@material-ui/core';
-import axios from 'axios';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -112,7 +111,6 @@ function LoadMenu(){
       })
       .then(function (response) {
         fetchCartCount();
-        console.log(response);
       })
       .catch(function (error) {
         console.log(error);

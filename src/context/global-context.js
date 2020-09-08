@@ -21,7 +21,6 @@ function GlobalProvider({children}) {
     const fetchCartCount = async() => {
         await http.get('/cart/count')
         .then(function (response) {
-            console.log("count responese", response);
             dispatch({type: 'SET_CART_COUNT', payload: response.data.data.count});
         })
         .catch(function (error) {
