@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import './cart.css'
-import 'bootstrap/dist/css/bootstrap.min.css';
-
+import Form from 'react-bootstrap/Form'
 import http from '../../http-common';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import NumericInput from 'react-numeric-input';
+import {useGlobalState} from '../../context/global-context';
 
 
 function Cart() {
     const [cartItems, setCartItems] = useState([]);
     const [price, setPrice] = useState(0.0);
+    const {cartCount, fetchCartCount} = useGlobalState();
 
     const fetchCart = async () => {
         await http.get('/cart')
@@ -20,6 +23,20 @@ function Cart() {
             .catch(function (error) {
                 console.log(error);
             })
+    };
+
+    const updateBasket = async( menuItemId, qty ) => {
+        await http.patch('/cart', {
+          menuItemId: menuItemId,
+          qty: qty
+        })
+        .then(function (response) {
+            fetchCart();
+            fetchCartCount();
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
     };
     console.log(price);
     useEffect(() => {
@@ -53,17 +70,10 @@ function Cart() {
                                                         </p>
                                                         
                                                     </div>
-                                                    <div>
-                                                        <div class="md-form">
-                                                            <input type="number" id="numberExample" class="form-control" value={item.qty} />
-                                                            <label for="numberExample">Anzahl</label>
-                                                        </div>
-                                                        <small
-                                                            id="passwordHelpBlock"
-                                                            className="form-text text-muted text-center"
-                                                        >
-                                                        </small>
-                                                    </div>
+                                                    <Form>
+                                                    <Form.Label>Anzahl</Form.Label>
+                                                    <NumericInput  value={item.qty} min='0' onChange={(e) => (updateBasket(item._id,e))}></NumericInput>
+                                                    </Form>
                                                 </div>
                                                 <div className="d-flex justify-content-between align-items-center">
                                                     <div>
