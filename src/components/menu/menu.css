@@ -1,3 +1,27 @@
 .appbar{
     margin-top: 6rem;
 }
+.items{
+    text-align: left;
+}
+.categorieTitle{
+    color: #116149;
+    font-size: 50px;
+    text-align: left;
+    text-decoration: underline;
+}
+.menuTitle {
+    text-decoration: none;
+    color: #1a1a1a;
+    font-size: 30px;
+}
+.menuTitleLink{
+    text-decoration: none;
+}
+.items li{
+    list-style-type: none;
+    text-decoration: none;
+}
+.description{
+    font-size: 20px;
+}

@@ -39,12 +39,14 @@ function LoadMenuDetail(){
     return(
         <div>
             {details.map((item, index) => ( 
-                <div> 
+                <div className="detailitem"> 
                     <h1 key={item._id} className="title">{item.name}</h1>
                     <img className= 'menuImage' src={item.image} alt="Ein Bild der Speise"/>
-                    <p key={item._id}>{item.description}</p>
-                    <p key={item._id}>Zutaten: {item.ingredients}</p>
-                    <p key={item._id}>Inhaltsstoffe: {item.additive}</p>
+                    <div className="textitems">
+                        <p key={item._id} className="text">{item.description}</p>
+                        <p key={item._id} className="text">Zutaten: {item.ingredients}</p>
+                        <p key={item._id} className="text">Inhaltsstoffe: {item.additive}</p>
+                    </div>
                 </div>
             ))} 
         </div>

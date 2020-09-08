@@ -1,7 +1,21 @@
+.detailitem{
+    text-align: center;
+    margin-left: 2rem;
+}
+
+.textitems{
+    margin-top: 4rem; 
+    float: center;
+    
+}
+.text{  
+}
 .title{
     margin-top: 10rem;
+    color: #116149;
 }
 .menuImage{
     border-radius: 50%;
     width: 300px;
+    
 }
