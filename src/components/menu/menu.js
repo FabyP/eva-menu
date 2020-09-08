@@ -49,7 +49,7 @@ function TabPanel(props) {
   const useStyles = makeStyles((theme) => ({
     root: {
       flexGrow: 1,
-      backgroundColor: theme.palette.background.paper,
+      backgroundColor: theme.palette.background.default, 
     },
   }));
 
@@ -154,15 +154,16 @@ function LoadMenu(){
             {categories.map((category, index) => (
                 <TabPanel key={category._id} value={value} index={index}> 
                     <h1 className="categorieTitle">{category.name}</h1>
-                    <img className= 'menuImage' src={category.image} alt="Kategorie Bild"/>
+                    <img className= 'imageCategory' src={category.image} alt="Kategorie Bild"/>
                     {/* <p>{category._id}</p>
                     <p>{JSON.stringify(sortedMenu[category._id])}</p> */}
                     {sortedMenu[category._id] !== undefined &&
                         sortedMenu[category._id].map((menu) =>(
-                          <div>
-                            <Link to={`/menu/${menu._id}`}><h2 className="menuTitle">{menu.name}</h2></Link>
-                            <IconContext.Provider value={{ color: "black", size: "2rem" }}><li className="add" onClick={() => addToCart(menu._id)}><a href="#"><MdAdd/></a></li></IconContext.Provider>
-                            {menu.description}
+                          <div className="items">
+                            <Link to={`/menu/${menu._id}`} className="menuTitleLink"><h2 className="menuTitle">{menu.name} {menu.menuitemprice.$numberDecimal}€</h2></Link>
+                            <div className="description">
+                              {menu.description} <IconContext.Provider value={{ color: "black", size: "2rem" }}><li className="add" onClick={() => addToCart(menu._id)}><a href="#"><MdAdd/></a></li></IconContext.Provider>
+                            </div>
                           </div>
                         ))
                       }                
