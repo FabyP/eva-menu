@@ -13,6 +13,8 @@ function Cart() {
     const [price, setPrice] = useState(0.0);
     const {cartCount, fetchCartCount} = useGlobalState();
     const [error, setError] = useState('');
+    const [ordered, setOrdered] = useState(false);
+    const [onOrderSuccessMessage, setOnOrderSuccessMessage] = useState('');
  
 
     const fetchCart = async () => {
@@ -61,15 +63,33 @@ function Cart() {
     }
 // 0: {_id: "5f3a9a22565f8134320ba59d", categoryID: "5f3aa56b565f8134320ba5b4", name: "Spargelcremesuppe", description: "mit Schnittlauchsahne und Croutons", image: "https://images.lecker.de/,id=2305507c,b=lecker,w=610,cg=c.jpg", …}
 //1: {_id: "5f3a9ee8565f8134320ba59e", categoryID: "5f3aa56b565f8134320ba5b4", name: "BBQ- Rippchen mit Knoblauchdip", description: "an kleiner Salatgarnitur und Baguette", image: "https://rezept.sz-magazin.de/wp-content/uploads/2018/08/spareribs-rippchen-grillen-rezept.jpeg", …}
-        function order(){
+        async function order(){
             const cookies = new Cookies();
-            let table = cookies.get('table');
+            let tableId = cookies.get('table');
             let secret = cookies.get('s');
-            if(table == null || secret == null){
+            if(tableId == null || secret == null){
                 setError('Bitte scannen sie den QR-Code auf ihrem Tisch ab');
+                return false;
+            }else{
+                await http.post('/order', {
+                    cartItems: cartItems,
+                    tableId: tableId,
+                    timeStamp: new Date(),
+                    secret: secret,
+                  })
+                  .then(function (response) {
+                     if(response.data.status === 'success'){
+                        setOnOrderSuccessMessage('Vielen Dank für ihre Bestellung!');
+                        setOrdered(true);
+                        fetchCartCount();
+                     }else if(response.data.status === 'error'){
+                         setError('Ein Fehler ist aufgetreten. Ihre Bestellung konnte leider nicht aufgenommen werden')
+                     }
+                  })
+                  .catch(function (error) {
+                    console.log(error);
+                  });  
             }
-            console.log(table);
-            console.log(secret);
         }
    
     useEffect(() => {
@@ -219,10 +239,12 @@ function Cart() {
                                 {error ? <div class="alert alert-danger" role="alert">
                                         {error}
                                 </div> :''}
-                                
+                                {onOrderSuccessMessage ? <div class="alert alert-success" role="alert">
+                                        {onOrderSuccessMessage}
+                                </div> :''}
                                 <button
                                 style={{ backgroundColor: '#13AA52', borderColor: '#13AA52'}}
-                                
+                                    disabled={ordered}
                                     type="button"
                                     className="btn btn-primary btn-block waves-effect waves-light"
                                     onClick={() => order()}
