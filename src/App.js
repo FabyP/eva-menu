@@ -40,9 +40,9 @@ function App() {
     let s = findGetParameter('s');
     if(table !== null && s !== null){
       const cookies = new Cookies();
+     
       cookies.set('table', table, { path: '/' });
       cookies.set('s', s, { path: '/' });
-
     }
   },[]);
 

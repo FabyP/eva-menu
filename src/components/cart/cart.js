@@ -5,12 +5,15 @@ import http from '../../http-common';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NumericInput from 'react-numeric-input';
 import {useGlobalState} from '../../context/global-context';
+import Cookies from 'universal-cookie';
 
 
 function Cart() {
     const [cartItems, setCartItems] = useState([]);
     const [price, setPrice] = useState(0.0);
     const {cartCount, fetchCartCount} = useGlobalState();
+    const [error, setError] = useState('');
+ 
 
     const fetchCart = async () => {
         await http.get('/cart')
@@ -55,11 +58,20 @@ function Cart() {
                 return item;
             }
         }))
-
+    }
 // 0: {_id: "5f3a9a22565f8134320ba59d", categoryID: "5f3aa56b565f8134320ba5b4", name: "Spargelcremesuppe", description: "mit Schnittlauchsahne und Croutons", image: "https://images.lecker.de/,id=2305507c,b=lecker,w=610,cg=c.jpg", …}
 //1: {_id: "5f3a9ee8565f8134320ba59e", categoryID: "5f3aa56b565f8134320ba5b4", name: "BBQ- Rippchen mit Knoblauchdip", description: "an kleiner Salatgarnitur und Baguette", image: "https://rezept.sz-magazin.de/wp-content/uploads/2018/08/spareribs-rippchen-grillen-rezept.jpeg", …}
-
-    }
+        function order(){
+            const cookies = new Cookies();
+            let table = cookies.get('table');
+            let secret = cookies.get('s');
+            if(table == null || secret == null){
+                setError('Bitte scannen sie den QR-Code auf ihrem Tisch ab');
+            }
+            console.log(table);
+            console.log(secret);
+        }
+   
     useEffect(() => {
          fetchCart();
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -204,11 +216,16 @@ function Cart() {
                                         </span>
                                     </li>
                                 </ul>
+                                {error ? <div class="alert alert-danger" role="alert">
+                                        {error}
+                                </div> :''}
+                                
                                 <button
                                 style={{ backgroundColor: '#13AA52', borderColor: '#13AA52'}}
                                 
                                     type="button"
                                     className="btn btn-primary btn-block waves-effect waves-light"
+                                    onClick={() => order()}
                                 >
                                     Bestellen
                             </button>
