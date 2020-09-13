@@ -16,7 +16,6 @@ function Cart() {
         await http.get('/cart')
             .then(function (response) {
                 let cart = JSON.parse(response.data.data);
-                console.log(response.data.data);
                 //setCartItems(response.data.data.cartitems);
                 setCartItems(cart.cartitems);
                
@@ -40,7 +39,27 @@ function Cart() {
           console.log(error);
         });
     };
-    console.log(price);
+    function handleNoteChange(id, e){
+        let note = e.target.value;
+        console.log(e.target.value);
+        console.log(id);
+        let index = cartItems.findIndex(x => x._id === id);
+        console.log(index);
+        setCartItems([...cartItems].map(item => {
+            if(item._id === id){
+                return {
+                    ...item,
+                    note: note,
+                  } 
+            }else{
+                return item;
+            }
+        }))
+
+// 0: {_id: "5f3a9a22565f8134320ba59d", categoryID: "5f3aa56b565f8134320ba5b4", name: "Spargelcremesuppe", description: "mit Schnittlauchsahne und Croutons", image: "https://images.lecker.de/,id=2305507c,b=lecker,w=610,cg=c.jpg", …}
+//1: {_id: "5f3a9ee8565f8134320ba59e", categoryID: "5f3aa56b565f8134320ba5b4", name: "BBQ- Rippchen mit Knoblauchdip", description: "an kleiner Salatgarnitur und Baguette", image: "https://rezept.sz-magazin.de/wp-content/uploads/2018/08/spareribs-rippchen-grillen-rezept.jpeg", …}
+
+    }
     useEffect(() => {
          fetchCart();
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -86,6 +105,8 @@ function Cart() {
                                                         >
                                                             <i className="fas fa-trash-alt mr-1" /> Entferne Gericht{" "}
                                                         </a>
+                                                        <br></br>
+                                                        <span>Anmerkung</span>
                                                     </div>
                                                     <p className="mb-0">
                                                         <span>
@@ -93,6 +114,9 @@ function Cart() {
                                                         </span>
                                                     </p>
                                                 </div>
+                                               
+                                                <textarea data-id={item._id} style={{width: '50%'}} onChange={(e)=> handleNoteChange(item._id,e)}>
+                                                </textarea>
                                             </div>
                                         </div>
                                     </div>
