@@ -7,7 +7,13 @@ const GlobalDispatchContext = React.createContext()
 function globalReducer(state, action) {
   switch (action.type) {
     case 'SET_CART_COUNT': {
+      
       return {cartCount: action.payload}
+    }
+    case 'INC_CART_COUNT': {
+      console.log(state.cartCount); 
+     
+      return {cartCount: state.cartCount+1}
     }
     default: {
       throw new Error(`Unhandled action type: ${action.type}`)
@@ -27,8 +33,12 @@ function GlobalProvider({children}) {
             console.log(error);
         })
     };
+    function incrementCartCount(){
+      dispatch({type: 'INC_CART_COUNT'});
+
+    }
   return (
-    <GlobalStateContext.Provider value={{cartCount: state.cartCount,fetchCartCount}}>
+    <GlobalStateContext.Provider value={{cartCount: state.cartCount,fetchCartCount,incrementCartCount}}>
       <GlobalDispatchContext.Provider value={{dispatch, fetchCartCount }}>
         {children}
       </GlobalDispatchContext.Provider>

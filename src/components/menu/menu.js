@@ -59,7 +59,7 @@ function LoadMenu(){
     const [categories, setCategories] = useState([]);
     const [menuitems, setMenuitems] = useState([]);
     const [sortedMenu, setSortedMenu] = useState({});
-    const {cartCount, fetchCartCount} = useGlobalState();
+    const {cartCount, fetchCartCount,incrementCartCount} = useGlobalState();
 
 
     const fetchCategories = async() => {
@@ -110,7 +110,7 @@ function LoadMenu(){
         menuItemId: menuItemId,
       })
       .then(function (response) {
-        fetchCartCount();
+        incrementCartCount();
       })
       .catch(function (error) {
         console.log(error);
