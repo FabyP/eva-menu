@@ -16,9 +16,11 @@ function Cart() {
         await http.get('/cart')
             .then(function (response) {
                 let cart = JSON.parse(response.data.data);
+                console.log(response.data.data);
                 //setCartItems(response.data.data.cartitems);
                 setCartItems(cart.cartitems);
-                setPrice(parseFloat(cart.price.toFixed(2)));
+               
+                setPrice(cart.price);
             })
             .catch(function (error) {
                 console.log(error);
