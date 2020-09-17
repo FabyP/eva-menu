@@ -8,9 +8,7 @@
     float: center;
     
 }
-.text{ 
-    font-size: large; 
-}
+
 .title{
     margin-top: 10rem;
     color: #116149;
@@ -20,3 +18,24 @@
     max-width: 300px;
     width: 70%;
 }
+
+@media screen and (min-width: 0px){
+    .text{ 
+        font-size: 0.8rem; 
+    }
+    }
+@media screen and (min-width: 320px){
+    .text{ 
+        font-size: 1.2rem; 
+    }
+    }
+@media screen and (min-width: 640px){
+    .text{ 
+        font-size: 1.6rem; 
+    }
+    }
+@media screen and (min-width: 1280px){
+    .text{ 
+        font-size: 2.4rem; 
+    }
+    }        

@@ -14,23 +14,10 @@
 }
 
 .caption{
-    margin-bottom: 10rem;
-    text-align: center;
+    top: 0;
+    bottom: auto;
 
 }
-/* h3{
-    margin-top: 2em;
-    color: #FAFBFC;
-    text-align: center;
-    text-decoration: underline;
-    font-size: 3rem;
-    
-}
-p{
-    text-align: center;
-    font-size: 1.2rem;
-    
-} */
 
 @media screen and (min-width: 0px){
     .topic{
@@ -49,7 +36,7 @@ p{
         color: #FAFBFC;
         text-align: center;
         text-decoration: underline;
-        font-size: 0.8rem !important;
+        font-size: 0.7rem !important;
         
     }
     p{

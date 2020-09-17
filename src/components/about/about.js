@@ -18,7 +18,7 @@ function ControlledCarousel() {
 
       <h1 className="topic">Allgemeine Informationen</h1>
 
-      <Carousel interval={10000} keyboard={false} pauseOnHover={true} className="carousel">  
+      <Carousel interval={100000000} keyboard={false} pauseOnHover={true} className="carousel">  
         <Carousel.Item style={{'height':"600px"}}  >  
           <img style={{'height':"600px"}}   className="d-block w-100" src={sliderImage}  />  
           <Carousel.Caption className="caption">  
