@@ -5,24 +5,117 @@
     width: 60%;
     justify-content: space-around;
     margin-top: 8rem;
+    
 }
 
 .carousel{
-    margin: 3rem 10rem;
+    margin: 3rem 2rem;
+    z-index: 0;
 }
 
 .caption{
     margin-bottom: 10rem;
     text-align: center;
+
 }
-h3{
+/* h3{
     margin-top: 2em;
     color: #FAFBFC;
     text-align: center;
     text-decoration: underline;
     font-size: 3rem;
+    
 }
 p{
     text-align: center;
     font-size: 1.2rem;
+    
+} */
+
+@media screen and (min-width: 0px){
+    .topic{
+        margin:auto;
+        display: flex;
+        align-items: center;
+        width: 60%;
+        justify-content: space-around;
+        margin-top: 8rem;
+        font-size: 1.5rem;
+        
+    }
+
+    h3{
+        margin-top: 2em;
+        color: #FAFBFC;
+        text-align: center;
+        text-decoration: underline;
+        font-size: 0.8rem !important;
+        
+    }
+    p{
+        text-align: center;
+        font-size: 0.6rem;
+        
+    }
+    }
+@media screen and (min-width: 320px){
+    .topic{
+        margin:auto;
+        display: flex;
+        align-items: center;
+        width: 60%;
+        justify-content: space-around;
+        margin-top: 8rem;
+        font-size: 2rem;
+        
+    }
+
+    h3{
+        margin-top: 2em;
+        color: #FAFBFC;
+        text-align: center;
+        text-decoration: underline;
+        font-Size: 1rem !important;
+        
+    }
+    p{  
+        text-align: center;
+        font-size: 0.8rem;
+        
+    }
+}
+
+@media screen and (min-width: 640px){
+.topic{
+    font-size:3rem;
+}
+    h3{
+        margin-top: 2em;
+        color: #FAFBFC;
+        text-align: center;
+        text-decoration: underline;
+        font-size: 3rem !important;
+        
+    }
+    p{
+        text-align: center;
+        font-size: 1.2rem;
+        
+    }
+}
+@media screen and (min-width: 1280px){
+
+    h3{
+        margin-top: 2em;
+        color: #FAFBFC;
+        text-align: center;
+        text-decoration: underline;
+        font-size: 3rem;
+        
+    }
+    p{
+        text-align: center;
+        font-size: 1.2rem;
+        
+    }
 }

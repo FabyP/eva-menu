@@ -143,7 +143,7 @@ function LoadMenu(){
         <div className={classes.root}>
             <AppBar position="static" className="appbar">
                 <Tabs value={value} onChange={handleChangeAppbar} aria-label="tabs">
-                    <Tabs value={selectedTab} onChange={handleChange}>
+                    <Tabs value={selectedTab} onChange={handleChange} variant="scrollable" scrollButtons="auto">
                         {categories.map((category, index) => (
                                 <Tab key={category._id} label={category.name} {...a11yProps(index)} />                                                      
                         ))}
@@ -154,7 +154,7 @@ function LoadMenu(){
             {categories.map((category, index) => (
                 <TabPanel key={category._id} value={value} index={index}> 
                     <h1 className="categorieTitle">{category.name}</h1>
-                    <img className= 'imageCategory' src={category.image} alt="Kategorie Bild"/>
+                    <img className= "imageCategory" src={category.image} alt="Kategorie Bild"/>
                     {/* <p>{category._id}</p>
                     <p>{JSON.stringify(sortedMenu[category._id])}</p> */}
                     {sortedMenu[category._id] !== undefined &&

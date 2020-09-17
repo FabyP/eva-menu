@@ -5,6 +5,7 @@
     width: 100%;
     background: green;
     height: 54px;
+    z-index: 1;
 }
 
 .navigation{
@@ -45,7 +46,7 @@
     
     }
 }
-@media screen and (min-width: 12800px){
+@media screen and (min-width: 1280px){
     .nav_logo a{
         color: #13aa52;
         text-decoration: none;
