@@ -74,7 +74,7 @@ function LoadMenu(){
                         ...prevState,[categoryId]: []
                      }))
                 }
-                
+                fetchMenuitems();
             })
 
         })
@@ -91,7 +91,7 @@ function LoadMenu(){
                 let menucategoriesId = menuitem.categoryID;
                 console.log(menucategoriesId);
                 console.log(sortedMenu);
-                if(menucategoriesId !== undefined && sortedMenu !== null){
+                if(menucategoriesId !== undefined && sortedMenu !== null ){
                 setSortedMenu((prevState) => ({               
                         ...prevState,
                         [menucategoriesId]: [...prevState[menucategoriesId], menuitem]
@@ -121,7 +121,6 @@ function LoadMenu(){
 
     useEffect(() =>{
         fetchCategories();
-        fetchMenuitems();
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 

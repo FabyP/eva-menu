@@ -182,12 +182,12 @@ function Cart() {
                         </div>
                         {/* Card */}
                         {/* Card */}
-                        <div className="card mb-3">
+                        {/* <div className="card mb-3">
                             <div className="card-body">
                                 <h5 className="mb-4">Informationen</h5>
                                 <p className="mb-0"> .....</p>
                             </div>
-                        </div>
+                        </div> */}
                         {/* Card */}
                         {/* Card */}
                         <div className="card mb-3">
