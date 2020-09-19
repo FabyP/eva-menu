@@ -74,9 +74,8 @@ function LoadMenu(){
                         ...prevState,[categoryId]: []
                      }))
                 }
-                fetchMenuitems();
             })
-
+            fetchMenuitems();
         })
         .catch(function (error) {
             console.log(error);
@@ -89,8 +88,6 @@ function LoadMenu(){
             setMenuitems(response.data);
              response.data.map(function (menuitem) {
                 let menucategoriesId = menuitem.categoryID;
-                console.log(menucategoriesId);
-                console.log(sortedMenu);
                 if(menucategoriesId !== undefined && sortedMenu !== null ){
                 setSortedMenu((prevState) => ({               
                         ...prevState,
@@ -98,8 +95,6 @@ function LoadMenu(){
                 }))
             }       
             }) 
-            console.log(response.data);
-            console.log(sortedMenu);
         })
         .catch(function (error) {
             console.log(error);
