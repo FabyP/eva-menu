@@ -90,7 +90,8 @@ function LoadMenu(){
              response.data.map(function (menuitem) {
                 let menucategoriesId = menuitem.categoryID;
                 console.log(menucategoriesId);
-                if(menucategoriesId !== undefined){
+                console.log(sortedMenu);
+                if(menucategoriesId !== undefined && sortedMenu !== null){
                 setSortedMenu((prevState) => ({               
                         ...prevState,
                         [menucategoriesId]: [...prevState[menucategoriesId], menuitem]
@@ -160,7 +161,7 @@ function LoadMenu(){
                     {sortedMenu[category._id] !== undefined &&
                         sortedMenu[category._id].map((menu) =>(
                           <div className="items">
-                            <Link to={`/menu/${menu._id}`} className="menuTitleLink"><h2 className="menuTitle">{menu.name} {menu.menuitemprice.$numberDecimal}€</h2></Link>
+                            <Link to={`/menu/${menu._id}`} className="menuTitleLink"><h2 className="menuTitle">{menu.name} {menu.menuitemprice}€</h2></Link>
                             <div className="description">
                               {menu.description} <IconContext.Provider value={{ color: "black", size: "2rem" }}><li className="add" onClick={() => addToCart(menu._id)}><a href="#"><MdAdd/></a></li></IconContext.Provider>
                             </div>

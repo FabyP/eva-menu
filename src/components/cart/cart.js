@@ -60,6 +60,7 @@ function Cart() {
                 return item;
             }
         }))
+    
     }
 // 0: {_id: "5f3a9a22565f8134320ba59d", categoryID: "5f3aa56b565f8134320ba5b4", name: "Spargelcremesuppe", description: "mit Schnittlauchsahne und Croutons", image: "https://images.lecker.de/,id=2305507c,b=lecker,w=610,cg=c.jpg", …}
 //1: {_id: "5f3a9ee8565f8134320ba59e", categoryID: "5f3aa56b565f8134320ba5b4", name: "BBQ- Rippchen mit Knoblauchdip", description: "an kleiner Salatgarnitur und Baguette", image: "https://rezept.sz-magazin.de/wp-content/uploads/2018/08/spareribs-rippchen-grillen-rezept.jpeg", …}
@@ -71,6 +72,7 @@ function Cart() {
                 setError('Bitte scannen sie den QR-Code auf ihrem Tisch ab');
                 return false;
             }else{
+                console.log(cartItems);
                 await http.post('/order', {
                     cartItems: cartItems,
                     tableId: tableId,
